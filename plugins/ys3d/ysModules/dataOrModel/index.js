@@ -1,4 +1,4 @@
-import _3d from '../../_3d.js'
+import _3d from '../../three.js'
 import single from '../singe.js'
 import state from  '../state.js'
 import { MTLLoader } from "../../threeLibs/loaders/MTLLoader.js"

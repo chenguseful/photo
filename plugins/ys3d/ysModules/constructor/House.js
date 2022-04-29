@@ -1,4 +1,4 @@
-import _3d from '../../_3d.js'
+import _3d from '../../three.js'
 import state from  '../state.js'
 
 const House = function (option) {

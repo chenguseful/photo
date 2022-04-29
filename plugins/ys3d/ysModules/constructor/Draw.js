@@ -1,4 +1,4 @@
-import _3d from '../../_3d.js'
+import _3d from '../../three.js'
 const U = undefined
 const D = document
 import state from  '../state.js'

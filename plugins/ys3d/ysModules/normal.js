@@ -1,4 +1,4 @@
-import _3d from '../_3d.js'
+import _3d from '../three.js'
 const D = document
 
 const randomColor = () => `rgb(${parseInt(Math.random() * 256)},${parseInt(Math.random() * 256)},${parseInt(Math.random() * 256)})`

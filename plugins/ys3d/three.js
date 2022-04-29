@@ -10,11 +10,11 @@ import * as  OrbitControls from "./threeLibs/controls/OrbitControls.js"
 import * as  CSS2DRenderers  from "./threeLibs/renderers/CSS2DRenderer.js"
 import * as  CSS3DRenderers  from "./threeLibs/renderers/CSS3DRenderer.js"
 import * as ThreeBSP from './threeLibs/libs/ThreeBSP.module.js'
-import * as Water from  '../../plugins/ys3d/threeLibs/objects/Water2.js'
-import * as RenderPass from  '../../plugins/ys3d/threeLibs/postprocessing/RenderPass.js'
-import * as UnrealBloomPass from  '../../plugins/ys3d/threeLibs/postprocessing/UnrealBloomPass.js'
+import * as Water from  './threeLibs/objects/Water2.js'
+import * as RenderPass from  './threeLibs/postprocessing/RenderPass.js'
+import * as UnrealBloomPass from  './threeLibs/postprocessing/UnrealBloomPass.js'
 import * as  OutlinePass  from "./threeLibs/postprocessing/OutlinePass.js"
-import * as EffectComposer from '../../plugins/ys3d/threeLibs/postprocessing/EffectComposer.js'
+import * as EffectComposer from './threeLibs/postprocessing/EffectComposer.js'
 
 const _3d = {}
 Object.assign(_3d, THREE)

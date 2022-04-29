@@ -5,7 +5,7 @@
  */
 import state from "./ysModules/state.js"
 import single from './ysModules/singe.js'
-import _3d from './_3d.js'
+import _3d from './three.js'
 import * as normal from './ysModules/normal.js'
 import * as points from './ysModules/points.js'
 import * as needState from './ysModules/needState.js'
