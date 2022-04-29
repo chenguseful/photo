@@ -4,7 +4,7 @@
  * @host www.wellyyss.cn
  * @qq group 169470811
  */
-import _3d from '../../three.js'
+import _3d from '../../_3d.js'
 // 两种颜色切换
 const _changeColorShader =  function(type) {
     this.uniforms = {

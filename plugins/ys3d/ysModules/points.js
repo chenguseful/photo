@@ -1,4 +1,4 @@
-import _3d from '../three.js'
+import _3d from '../_3d.js'
 const D = document
 const imageToBufferGeometry = option => {
     option = option || {}

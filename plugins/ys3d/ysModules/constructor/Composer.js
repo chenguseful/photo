@@ -8,7 +8,7 @@ import { BokehPass } from '../../threeLibs/postprocessing/BokehPass.js'
 
 import { FocusShader } from '../../threeLibs/shaders/FocusShader.js'
 import { FXAAShader } from '../../threeLibs/shaders/FXAAShader.js'
-import _3d from '../../three.js'
+import _3d from '../../_3d.js'
 import state from  '../state.js'
 
 const Composer = function (option) {

@@ -1,5 +1,5 @@
 import single from "../singe.js"
-import _3d from "../../three.js"
+import _3d from "../../_3d.js"
 
 import Draw from "./Draw.js"
 import CssRenderer from "./CssRenderer.js"

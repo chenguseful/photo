@@ -1,4 +1,4 @@
-import _3d from '../three.js'
+import _3d from '../_3d.js'
 import state from  './state.js'
 const D = document
 const raycaster = new _3d.Raycaster()
@@ -90,10 +90,6 @@ const createAnimateLine = option => {
         const sphereHeightPointsArgs = option.sphereHeightPointsArgs
         const pointList = state.app.getSphereHeightPoints(...sphereHeightPointsArgs) // v0,v3,n1,n2,p0
         curve = new _3d.CubicBezierCurve3(sphereHeightPointsArgs[0], pointList[0], pointList[1], sphereHeightPointsArgs[1])
-    } else if(option.kind === 'migrate') { // 由多个点数组构成的曲线 通常用于道路
-        const l = []
-        option.pointList.forEach(e => l.push(new _3d.Vector3(e[0], e[1], e[2])))
-        curve = new _3d.QuadraticBezierCurve3(l[0], l[1], l[2]) // 曲线路径
     } else { // 由多个点数组构成的曲线 通常用于道路
         const l = []
         option.pointList.forEach(e => l.push(new _3d.Vector3(e[0], e[1], e[2])))

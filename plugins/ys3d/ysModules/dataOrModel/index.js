@@ -1,4 +1,4 @@
-import _3d from '../../three.js'
+import _3d from '../../_3d.js'
 import single from '../singe.js'
 import state from  '../state.js'
 import { MTLLoader } from "../../threeLibs/loaders/MTLLoader.js"
@@ -120,10 +120,9 @@ const readJson = option => {
     const worldLabel =  new _3d.Object3D()
     const M  = option.allScale || 1
     const center = option.center || [0,0]
-
     option.json.features.forEach(worldItem => {
         const length = worldItem.geometry.coordinates.length
-        const multipleBool = length || 1
+        const multipleBool = length > 1
         const material1 = option.sideMaterial
         const material2 = option.frontMaterial
         // 同一个国家可能分了几个块。比如中国就有14多个。
@@ -132,7 +131,6 @@ const readJson = option => {
         if(worldItem.properties) {
             height =  option.extrude.depth * (worldItem.properties.Floor || worldItem.properties.floor || 1)
         }
-
         worldItem.geometry.coordinates.forEach(worldChildItem =>{
             let part
             if (multipleBool) {
@@ -153,18 +151,10 @@ const readJson = option => {
         oneCountry.name = worldItem.properties.name
         if (option.showLabel && worldItem.properties.cp) {
             const label = state.app.createSpriteText(oneCountry.name, {
-                fontSize: option.labelSize,
+                fontSize: 12,
                 color: option.labelColor || '#fff'
             })
             label.position.set(worldItem.properties.cp[0] * M,worldItem.properties.cp[1]* M,option.labelHeight || 2)
-            label.renderOrder = state.app.renderOrder ++
-            worldLabel.add(label)
-        } else if(option.showLabel && worldItem.properties.center) {
-            const label = state.app.createSpriteText(oneCountry.name, {
-                fontSize: option.labelSize,
-                color: option.labelColor || '#fff'
-            })
-            label.position.set(worldItem.properties.center[0] * M,worldItem.properties.center[1]* M,option.labelHeight || 2)
             label.renderOrder = state.app.renderOrder ++
             worldLabel.add(label)
         }
