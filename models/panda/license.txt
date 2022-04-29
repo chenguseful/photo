@@ -1,0 +1,11 @@
+Model Information:
+* title:	Panda head meme
+* source:	https://sketchfab.com/3d-models/panda-head-meme-726745400b4d44128016f4280c313a3d
+* author:	gaoran0623 (https://sketchfab.com/gaoran0623)
+
+Model License:
+* license type:	CC-BY-NC-SA-4.0 (http://creativecommons.org/licenses/by-nc-sa/4.0/)
+* requirements:	Author must be credited. No commercial use. Modified versions must have the same license.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Panda head meme" (https://sketchfab.com/3d-models/panda-head-meme-726745400b4d44128016f4280c313a3d) by gaoran0623 (https://sketchfab.com/gaoran0623) licensed under CC-BY-NC-SA-4.0 (http://creativecommons.org/licenses/by-nc-sa/4.0/)
