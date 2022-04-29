@@ -8,7 +8,7 @@ import {
 
 $('.ar-identify').on('click', function (event) {
     $(this).hide();
-    $('.wrap img').show();
+    $('.load').show();
     event.preventDefault();
     html2canvas(document.body, {
         allowTaint: true,
@@ -76,7 +76,7 @@ function loadModel() {
         obj.position.set(0, 2, 0)
         obj.scale.set(1, 1, 1)
         scene.add(obj);
-        $('.wrap img').hide()
+        $('.load').hide()
     });
 }
 
