@@ -20,9 +20,9 @@ html, body {
 .wrap button {
     position: absolute;
     left: 25%;
-    bottom: 64px;
+    bottom: 24px;
     width: 50%;
-    height: 64px;
+    height: 40px;
     color: #007aff;
     font-size: 20px;
     background: transparent;
