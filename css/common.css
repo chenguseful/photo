@@ -33,12 +33,10 @@ html, body {
     cursor: pointer;
 }
 
-#person {
+#container {
     position: absolute;
     top: 0;
     left: 0;
-    bottom: 128px;
-    width: 100%;
 }
 
 .wrap img {

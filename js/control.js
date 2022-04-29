@@ -1,4 +1,10 @@
-import Ys3dApp from '../plugins/ys3d/index.js'
+import * as THREE from '../plugins/Three/build/three.module.js';
+import {
+    OrbitControls
+} from '../plugins/Three/module/jsm/controls/OrbitControls.js';
+import {
+    GLTFLoader
+} from '../plugins/Three/module/jsm/loaders/GLTFLoader.js';
 
 $('.ar-identify').on('click', function (event) {
     $(this).hide();
@@ -16,61 +22,74 @@ $('.ar-identify').on('click', function (event) {
     })
 })
 
+var container;
+var camera, scene, renderer;
+var controls, group;
 
 function init() {
-    const el = document.getElementById('person')
-    const app = new Ys3dApp(el)
-    const scene = app.scene
-    const renderer = app.renderer
-    const camera = app.camera
-    const _3d = app._3d
-    renderer.setClearAlpha(0); //清除自带颜色
+    container = document.getElementById('container');
 
-    const controls = app.initOrbitControls(el)
-    controls.autoRotate = false
-    camera.position.set(0, 0, 1200)
+    scene = new THREE.Scene();
 
-    app.controls.enablePan = false;
+    camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 100000);
+    camera.position.set(0, 2, 10);
 
-    let allGroup = new _3d.Group()
-    allGroup.scale.set(2, 2, 2)
-    allGroup.position.set(0, 0, 0)
-    scene.add(allGroup)
+    controls = new OrbitControls(camera, container);
+    controls.target.set(0, 2, 0);
+    controls.update();
 
-    initLight()
+    scene.add(new THREE.HemisphereLight(0x808080, 0x606060));
+
+    var light = new THREE.DirectionalLight(0xffffff);
+    light.position.set(0, 6, 0);
+    light.castShadow = true;
+    light.shadow.camera.top = 2;
+    light.shadow.camera.bottom = -2;
+    light.shadow.camera.right = 2;
+    light.shadow.camera.left = -2;
+    light.shadow.mapSize.set(4096, 4096);
+    scene.add(light);
+
+    var point = new THREE.PointLight(0xffffff, 1, 100);
+    point.position.set(0, 0, 0);
+    scene.add(point);
+
+    group = new THREE.Group();
+    scene.add(group);
+
     loadModel()
 
-    app.getClickPoint(p => {
-        console.log(`${p.x.toFixed(3)},${p.y.toFixed(3)},${p.z.toFixed(3)}`)
-    })
+    renderer = new THREE.WebGLRenderer({
+        alpha: true
+    });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    container.appendChild(renderer.domElement);
 
-    app.render(() => {
-        renderer.render(scene, camera)
-        app.controls.update()
-    })
+    animate()
+    window.addEventListener('resize', onWindowResize, false);
+}
 
-    //灯光
-    function initLight() {
-        var ambient = new _3d.AmbientLight('#ffffff', 1); //环境光
-        scene.add(ambient);
-    }
+function loadModel() {
+    var loader = new GLTFLoader().setPath('../models/panda/');
+    loader.load('scene.gltf', function (gltf) {
+        const obj = gltf.scene
+        obj.position.set(0, 2, 0)
+        obj.scale.set(1, 1, 1)
+        scene.add(obj);
+        $('.wrap img').hide()
+    });
+}
 
-    //导入模型
-    function loadModel() {
+function onWindowResize() {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+}
 
-        let objFileList = []
-        objFileList = [{
-            type: 'gltf',
-            url: '../models/panda/scene.gltf',
-            onLoad: function (object) {
-                const obj = object.scene.clone()
-                obj.position.set(0, 0, 0)
-                obj.scale.set(80, 80, 80)
-                allGroup.add(obj)
-                $('.wrap img').hide();
-            }
-        }]
-        app.iterateLoad(objFileList, () => {}, () => {})
-        return this
-    }
+function animate() {
+    renderer.setAnimationLoop(render);
+}
+
+function render() {
+    renderer.render(scene, camera);
 }
